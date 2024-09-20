@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxkcwiu3kltmf"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_10h8x"]
+[ext_resource type="Texture2D" uid="uid://b07ppvynrioum" path="res://assets/space_background.png" id="1_ctspg"]
+[ext_resource type="PackedScene" uid="uid://ha5inn7poxpa" path="res://rock.tscn" id="2_etslb"]
+[ext_resource type="PackedScene" uid="uid://b4a3ct6sv2ogx" path="res://player.tscn" id="2_hgr4b"]
+[ext_resource type="PackedScene" uid="uid://jwyjjaqdatw7" path="res://enemy.tscn" id="3_lhtlv"]
+[ext_resource type="PackedScene" uid="uid://d0q1kv7u1wqw2" path="res://hud.tscn" id="5_3mxc2"]
+[ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://explosion.tscn" id="5_gml3u"]
+
+[sub_resource type="Curve2D" id="Curve2D_3i8h2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -725, -257, 0, 0, 0, 0, 1809, -269, 0, 0, 0, 0, 1811, 883, 0, 0, 0, 0, -735, 895, 0, 0, 0, 0, -725, -257)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+process_mode = 3
+script = ExtResource("1_10h8x")
+rock_scene = ExtResource("2_etslb")
+enemy_scene = ExtResource("3_lhtlv")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(531, 305)
+scale = Vector2(1.42396, 1.34074)
+texture = ExtResource("1_ctspg")
+
+[node name="RockPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3i8h2")
+
+[node name="RockSpawn" type="PathFollow2D" parent="RockPath"]
+position = Vector2(-725, -257)
+rotation = -0.00473556
+
+[node name="Player" parent="." instance=ExtResource("2_hgr4b")]
+position = Vector2(403, 261)
+scale = Vector2(1.42396, 1.34074)
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Explosion" parent="Player" instance=ExtResource("5_gml3u")]
+visible = false
+
+[node name="InvulnerabilityTimer" type="Timer" parent="Player"]
+wait_time = 2.0
+one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("5_3mxc2")]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
+[connection signal="dead" from="Player" to="." method="game_over"]
+[connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
+[connection signal="timeout" from="Player/InvulnerabilityTimer" to="Player" method="_on_invulnerability_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
