@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxkcwiu3kltmf"]
+[gd_scene load_steps=12 format=3 uid="uid://cxkcwiu3kltmf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_10h8x"]
 [ext_resource type="Texture2D" uid="uid://b07ppvynrioum" path="res://assets/space_background.png" id="1_ctspg"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://jwyjjaqdatw7" path="res://enemy.tscn" id="3_lhtlv"]
 [ext_resource type="PackedScene" uid="uid://d0q1kv7u1wqw2" path="res://hud.tscn" id="5_3mxc2"]
 [ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://explosion.tscn" id="5_gml3u"]
+[ext_resource type="AudioStream" uid="uid://2je508n8sl77" path="res://assets/sounds/Funky-Gameplay_Looping.ogg" id="8_mo4w1"]
+[ext_resource type="AudioStream" uid="uid://qnkfhmt38282" path="res://assets/sounds/levelup.ogg" id="9_2hsog"]
+[ext_resource type="AudioStream" uid="uid://cw48tw88o6uyl" path="res://assets/sounds/explosion.wav" id="10_c0d3y"]
 
 [sub_resource type="Curve2D" id="Curve2D_3i8h2"]
 _data = {
@@ -21,8 +24,8 @@ rock_scene = ExtResource("2_etslb")
 enemy_scene = ExtResource("3_lhtlv")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(531, 305)
-scale = Vector2(1.42396, 1.34074)
+position = Vector2(449, 221)
+scale = Vector2(2.82839, 2.62824)
 texture = ExtResource("1_ctspg")
 
 [node name="RockPath" type="Path2D" parent="."]
@@ -50,9 +53,19 @@ one_shot = true
 [node name="EnemyTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_mo4w1")
+
+[node name="LevelupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_2hsog")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_c0d3y")
+
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
 [connection signal="dead" from="Player" to="." method="game_over"]
 [connection signal="lives_changed" from="Player" to="HUD" method="update_lives"]
+[connection signal="shield_changed" from="Player" to="HUD" method="update_shield"]
 [connection signal="timeout" from="Player/InvulnerabilityTimer" to="Player" method="_on_invulnerability_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

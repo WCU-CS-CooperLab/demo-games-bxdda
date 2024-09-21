@@ -2,6 +2,7 @@ extends RigidBody2D
 
 signal shield_changed
 signal lives_changed
+signal health_changed
 signal dead
 
 @export var engine_power := 500
@@ -12,19 +13,15 @@ signal dead
 
 @export var max_shield = 100.0
 @export var shield_regen = 5.0
-
-@onready var shield_bar = $MarginContainer/HBoxContainer/ShieldBar
-
-var bar_textures = {
-"green": preload("res://assets/bar_green_200.png"),
-"yellow": preload("res://assets/bar_yellow_200.png"),
-"red": preload("res://assets/bar_red_200.png")
-}
+@export var max_health = 100.0
 
 var shield = 0: set = set_shield
 var reset_pos = false
 var lives = 0: set = set_lives
 var can_shoot = true
+
+var health = 0: set = set_health
+
 
 var screensize = Vector2.ZERO
 
@@ -56,6 +53,7 @@ func change_state(new_state):
 			$Sprite2D.hide()
 			linear_velocity = Vector2.ZERO
 			dead.emit()
+			$EngineSound.stop()
 	state = new_state
 
 func _process(delta):
@@ -64,10 +62,16 @@ func _process(delta):
 
 
 func get_input():
+	$Exhaust.emitting = false
 	thrust = Vector2.ZERO
 	if state in [player_state.DEAD, player_state.INIT] :
 		return
 	if Input.is_action_pressed("thrust"):
+		$Exhaust.emitting = true
+		if not $EngineSound.playing:
+			$EngineSound.play()
+		else:
+			$EngineSound.stop()
 		thrust = transform.x * engine_power
 	rotation_dir = Input.get_axis("rotate_left", "rotate_right")
 	if Input.is_action_pressed("shoot") and can_shoot:
@@ -94,7 +98,7 @@ func shoot():
 	var b = bullet_scene.instantiate()
 	get_tree().root.add_child(b)
 	b.start($Muzzle.global_transform)
-
+	$LaserSound.play()
 
 func _on_gun_cooldown_timeout() -> void:
 	can_shoot = true
@@ -126,6 +130,7 @@ func _on_body_entered(body):
 		
 
 func explode():
+	$ExplosionSound.play()
 	$Explosion.show()
 	$Explosion/AnimationPlayer.play("explosion")
 	await $Explosion/AnimationPlayer.animation_finished
@@ -138,4 +143,12 @@ func set_shield(value):
 	if shield <= 0:
 		lives -= 1
 		explode()
-	shield = max_shield
+	
+func set_health(value):
+	value = min(value, max_shield)
+	health = value
+	health_changed.emit(health / max_health)
+	if health <= 0:
+		lives -= 1
+		explode()
+	

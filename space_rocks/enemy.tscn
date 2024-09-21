@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://jwyjjaqdatw7"]
+[gd_scene load_steps=15 format=3 uid="uid://jwyjjaqdatw7"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_h8u8a"]
 [ext_resource type="Texture2D" uid="uid://ymxkyljmhcrm" path="res://assets/enemy_saucer.png" id="1_upibb"]
 [ext_resource type="PackedScene" uid="uid://bbrp07ndxbsar" path="res://enemy_bullet.tscn" id="2_8gcnw"]
-[ext_resource type="PackedScene" path="res://enemy_paths.tscn" id="2_nlwat"]
+[ext_resource type="PackedScene" uid="uid://nucvldpl62ju" path="res://enemy_paths.tscn" id="2_nlwat"]
 [ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://explosion.tscn" id="4_d0mtj"]
+[ext_resource type="Texture2D" uid="uid://8w6dn806flqm" path="res://assets/corona.png" id="6_vhsbl"]
+[ext_resource type="AudioStream" uid="uid://cyj68myovke7y" path="res://assets/sounds/enemy_laser2.wav" id="7_8o5sr"]
+[ext_resource type="AudioStream" uid="uid://cw48tw88o6uyl" path="res://assets/sounds/explosion.wav" id="8_1rpn1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7eufq"]
 radius = 36.0139
@@ -48,6 +51,13 @@ _data = {
 "flash": SubResource("Animation_7wg6v")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3ygj2"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_r2g4f"]
+_data = [Vector2(0.123596, 1), 0.0, 0.0, 0, 0, Vector2(0.533708, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.910112, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Enemy" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_h8u8a")
 bullet_scene = ExtResource("2_8gcnw")
@@ -73,6 +83,24 @@ visible = false
 [node name="GunCooldown" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="Exhaust" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_3ygj2")
+amount = 20
+texture = ExtResource("6_vhsbl")
+emission_shape = 1
+emission_sphere_radius = 25.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_r2g4f")
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8o5sr")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_1rpn1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
