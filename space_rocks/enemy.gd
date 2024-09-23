@@ -1,5 +1,7 @@
 extends Area2D
 
+signal exploded
+
 @export var bullet_scene : PackedScene
 @export var speed = 150
 @export var rotation_speed = 120
@@ -53,6 +55,7 @@ func explode():
 	$ExplosionSound.play()
 	$Explosion.show()
 	$Explosion/AnimationPlayer.play("explosion")
+	exploded.emit()
 	await $Explosion/AnimationPlayer.animation_finished
 	queue_free()
 
@@ -61,4 +64,4 @@ func _on_body_entered(body):
 		if body.is_in_group("rocks"):
 			return
 		explode()
-		body.shield -= 50
+		body.explode()

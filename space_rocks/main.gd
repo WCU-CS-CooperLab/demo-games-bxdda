@@ -26,7 +26,11 @@ func spawn_rock(size, pos=null, vel=null):
 	call_deferred("add_child", r)
 	r.exploded.connect(self._on_rock_exploded)
 	
+func _on_enemy_exploded():
+	score += 50
+
 func _on_rock_exploded(size, radius, pos, vel):
+	score += size * 5
 	$ExplosionSound.play()
 	if size <= 1:
 		return
@@ -52,12 +56,15 @@ func new_game():
 func new_level():
 	$LevelupSound.play()
 	level += 1
-	$HUD.show_message("Wave %s" % level)
-	for i in level:
-		spawn_rock(3)
+	if level > 1:
+		score += 10
+	$HUD.show_message("LEVEL %s" % level)
+	for i in level * 3:
+		spawn_rock(level * 2)
 	$EnemyTimer.start(randf_range(5, 10))
 
 func _process(delta):
+	$HUD.update_score(score)
 	if not playing:
 		return
 	if get_tree().get_nodes_in_group("rocks").size() == 0:
@@ -74,17 +81,23 @@ func _input(event):
 		if not playing:
 			return
 		get_tree().paused = not get_tree().paused
-		var message = $HUD/VBoxContainer/Message
+		var message = $HUD/Message
 		if get_tree().paused:
 			message.text = "Paused"
 			message.show()
 		else:
 			message.text = ""
 			message.hide()
-
+	if event.is_action_pressed("exit"):
+		get_tree().quit()
+	if event.is_action_pressed("new_life"):
+		if ($Player.lives < 3) && (score / 500 >= 1):
+			$Player.add_life()
+			score -= 500
 
 func _on_enemy_timer_timeout():
 	var e = enemy_scene.instantiate()
 	add_child(e)
 	e.target = $Player
+	e.exploded.connect(self._on_enemy_exploded)
 	$EnemyTimer.start(randf_range(20, 40))

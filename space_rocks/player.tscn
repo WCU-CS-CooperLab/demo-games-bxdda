@@ -46,11 +46,48 @@ stream = ExtResource("4_b1bc8")
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_q1h03")
 
+[node name="EngineSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_q1h03")
+volume_db = 2.971
+pitch_scale = 0.66
+
 [node name="Exhaust" type="CPUParticles2D" parent="."]
 show_behind_parent = true
 position = Vector2(-28, 0)
 rotation = 3.14159
 amount = 25
+lifetime = 0.1
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 1.0
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 400.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_6brfg")
+color_ramp = SubResource("Gradient_omwsc")
+
+[node name="Exhaust2" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(-28, 0)
+rotation = 3.14159
+amount = 500
+lifetime = 0.1
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(1, 5)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 400.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_6brfg")
+color_ramp = SubResource("Gradient_omwsc")
+
+[node name="ExhaustLow" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(-28, 0)
+rotation = 3.14159
+amount = 1
 lifetime = 0.1
 local_coords = true
 emission_shape = 3

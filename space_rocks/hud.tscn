@@ -38,8 +38,6 @@ layout_mode = 2
 [node name="Score" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0
-"
 label_settings = SubResource("LabelSettings_hh2cf")
 
 [node name="Shield" type="TextureRect" parent="MarginContainer/HBoxContainer"]
@@ -65,7 +63,7 @@ stretch_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-max_value = 3.0
+max_value = 1.0
 step = 0.01
 texture_over = ExtResource("4_3d3tv")
 texture_progress = ExtResource("7_u7p2w")

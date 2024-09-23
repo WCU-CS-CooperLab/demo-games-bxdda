@@ -48,3 +48,7 @@ func _on_start_button_pressed():
 func _on_timer_timeout():
 	message.hide()
 	message.text = ""
+
+
+func update_health(value):
+	health_bar.value = value

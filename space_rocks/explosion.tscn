@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://de5rll1g1mwec"]
+[gd_scene load_steps=6 format=3 uid="uid://de5rll1g1mwec"]
 
 [ext_resource type="Texture2D" uid="uid://dtfmfxxryw57i" path="res://assets/explosion.png" id="1_2tgxs"]
+[ext_resource type="AudioStream" uid="uid://cw48tw88o6uyl" path="res://assets/sounds/explosion.wav" id="2_f05aq"]
 
 [sub_resource type="Animation" id="Animation_ikrbo"]
 length = 0.001
@@ -49,3 +50,6 @@ vframes = 8
 libraries = {
 "": SubResource("AnimationLibrary_2a8jo")
 }
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_f05aq")

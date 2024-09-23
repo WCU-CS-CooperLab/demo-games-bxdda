@@ -6,6 +6,7 @@ signal health_changed
 signal dead
 
 @export var engine_power := 500
+@export var boost_power := 1000
 @export var spin_power := 8000
 
 @export var bullet_scene: PackedScene
@@ -13,7 +14,9 @@ signal dead
 
 @export var max_shield = 100.0
 @export var shield_regen = 5.0
+@export var health_regen = 3.0
 @export var max_health = 100.0
+@export var max_lives = 3
 
 var shield = 0: set = set_shield
 var reset_pos = false
@@ -27,6 +30,8 @@ var screensize = Vector2.ZERO
 
 var thrust := Vector2.ZERO
 var rotation_dir := 0
+
+var shield_off = false
 
 enum player_state { INIT, ALIVE, INVULNERABLE, DEAD }
 var state = player_state.INIT
@@ -58,11 +63,13 @@ func change_state(new_state):
 
 func _process(delta):
 	get_input()
-	shield += shield_regen * delta
-
+	if not thrust == transform.x * boost_power : 
+		shield += shield_regen * delta
+	health += health_regen * delta
 
 func get_input():
 	$Exhaust.emitting = false
+	$Exhaust2.emitting = false
 	thrust = Vector2.ZERO
 	if state in [player_state.DEAD, player_state.INIT] :
 		return
@@ -72,7 +79,13 @@ func get_input():
 			$EngineSound.play()
 		else:
 			$EngineSound.stop()
+			$EngineSound2.stop()
 		thrust = transform.x * engine_power
+	if Input.is_action_pressed("boost"):
+		$Exhaust.emitting = false
+		$Exhaust2.emitting = true
+		thrust = transform.x * boost_power
+		$EngineSound2.play()
 	rotation_dir = Input.get_axis("rotate_left", "rotate_right")
 	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
@@ -105,13 +118,19 @@ func _on_gun_cooldown_timeout() -> void:
 
 
 func set_lives(value):
-	lives = value
+	lives = min(value, max_lives)
 	lives_changed.emit(lives)
 	if lives <= 0:
 		change_state(player_state.DEAD)
 	else:
 		change_state(player_state.INVULNERABLE)
+	shield_off = false
 	shield = max_shield
+	health = max_health
+	
+func add_life():
+	lives += 1
+
 
 func reset():
 	reset_pos = true
@@ -124,10 +143,8 @@ func _on_invulnerability_timer_timeout():
 
 func _on_body_entered(body):
 	if body.is_in_group("rocks"):
-		shield -= body.size * 25
+		take_damage(body.size * 25)
 		body.explode()
-		
-		
 
 func explode():
 	$ExplosionSound.play()
@@ -141,14 +158,24 @@ func set_shield(value):
 	shield = value
 	shield_changed.emit(shield / max_shield)
 	if shield <= 0:
-		lives -= 1
-		explode()
+		shield_off = true
+	else: 
+		shield_off = false
+		#explode() # make this an electric explosion
 	
 func set_health(value):
-	value = min(value, max_shield)
-	health = value
-	health_changed.emit(health / max_health)
-	if health <= 0:
-		lives -= 1
-		explode()
+		value = min(value, max_shield)
+		health = value
+		health_changed.emit(health / max_health)
+		if health <= 0:
+			lives -= 1
+			explode()
+			
+
+func take_damage(value):
+	value = min(value, max_health)
+	if shield_off:
+		health -= 1.5 * value
+	else:
+		shield -= value
 	
