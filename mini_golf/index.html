@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>MiniGolf</title>
+		<title>Test Project1</title>
 		<style>
 html, body, #canvas {
 	margin: 0;
@@ -76,9 +76,10 @@ body {
 	z-index: 1;
 }
 		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="3D.icon.png" />
-<link rel="apple-touch-icon" href="3D.apple-touch-icon.png"/>
+		<link id="-gd-engine-icon" rel="icon" type="image/png" href="player_scene.icon.png" />
+<link rel="apple-touch-icon" href="player_scene.apple-touch-icon.png"/>
 
+<script src="./coi-serviceworker.js"></script>
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -90,14 +91,14 @@ body {
 		</noscript>
 
 		<div id="status">
-			<img id="status-splash" src="3D.png" alt="">
+			<img id="status-splash" src="player_scene.png" alt="">
 			<progress id="status-progress"></progress>
 			<div id="status-notice"></div>
 		</div>
 
-		<script src="3D.js"></script>
+		<script src="player_scene.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"3D","experimentalVK":false,"fileSizes":{"3D.pck":3013904,"3D.wasm":35376909},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"player_scene","experimentalVK":false,"fileSizes":{"player_scene.pck":1348960,"player_scene.wasm":35376909},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -196,4 +197,3 @@ const engine = new Engine(GODOT_CONFIG);
 		</script>
 	</body>
 </html>
-
