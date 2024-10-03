@@ -7,6 +7,8 @@ A template repository to publish games
 
 [Mini_Golf (Main_scene)](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/mini_golf/3D.html)
 
+[Jungle_Jump (Main_scene)](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/mini_golf/JungleJump.html)
+
 # Directories
 
 [Player_scene](player_scene/)
@@ -15,5 +17,6 @@ A template repository to publish games
 
 [Mini_Golf_scene](mini_golf/)
 
+[Jungle_Jump_scene](jungle_jump/)
 
 
