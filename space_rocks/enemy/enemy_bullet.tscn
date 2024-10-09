@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbrp07ndxbsar"]
 
-[ext_resource type="Script" path="res://enemy_bullet.gd" id="1_who4v"]
+[ext_resource type="Script" path="res://enemy/enemy_bullet.gd" id="1_who4v"]
 [ext_resource type="Texture2D" uid="uid://c2b3solwndyu" path="res://assets/laser_green.png" id="2_j2fta"]
-[ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://explosion.tscn" id="3_du7yv"]
+[ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://effects/explosion.tscn" id="3_du7yv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjuiu"]
 

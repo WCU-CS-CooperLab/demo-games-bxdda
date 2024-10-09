@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4a3ct6sv2ogx"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_d7pas"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_d7pas"]
 [ext_resource type="Texture2D" uid="uid://wtprn3nms74y" path="res://assets/player_ship.png" id="1_u0lav"]
-[ext_resource type="PackedScene" uid="uid://dw3k4liers6en" path="res://bullet.tscn" id="2_4x6nd"]
+[ext_resource type="PackedScene" uid="uid://dw3k4liers6en" path="res://effects/bullet.tscn" id="2_4x6nd"]
 [ext_resource type="AudioStream" uid="uid://d3h8qa6cqvvj6" path="res://assets/sounds/laser.ogg" id="4_b1bc8"]
 [ext_resource type="AudioStream" uid="uid://bmd0h32nuicl5" path="res://assets/sounds/engine.ogg" id="5_q1h03"]
 [ext_resource type="AudioStream" uid="uid://cw48tw88o6uyl" path="res://assets/sounds/explosion.wav" id="6_b5byu"]

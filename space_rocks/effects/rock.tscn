@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ha5inn7poxpa"]
 
-[ext_resource type="Script" path="res://rock.gd" id="1_ctnax"]
+[ext_resource type="Script" path="res://effects/rock.gd" id="1_ctnax"]
 [ext_resource type="Texture2D" uid="uid://cajgr0uv8ca1w" path="res://assets/rock.png" id="2_t71js"]
-[ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://explosion.tscn" id="3_3bwpn"]
+[ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://effects/explosion.tscn" id="3_3bwpn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hjxkf"]
 bounce = 1.0

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://dw3k4liers6en"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_5au7q"]
+[ext_resource type="Script" path="res://effects/bullet.gd" id="1_5au7q"]
 [ext_resource type="Texture2D" uid="uid://bu7l6w606qapv" path="res://assets/laser.png" id="2_yiqkj"]
-[ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://explosion.tscn" id="3_jk6vm"]
-[ext_resource type="Script" path="res://explosion.gd" id="4_027kn"]
+[ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://effects/explosion.tscn" id="3_jk6vm"]
+[ext_resource type="Script" path="res://effects/explosion.gd" id="4_027kn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjuiu"]
 
