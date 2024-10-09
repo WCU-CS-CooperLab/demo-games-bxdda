@@ -19,3 +19,13 @@ layer_0/tile_data = PackedInt32Array(983046, 589824, 12)
 
 [node name="SpawnPoint" parent="." index="5"]
 position = Vector2(22, 202)
+
+[node name="CanvasLayer" parent="." index="6"]
+follow_viewport_enabled = true
+
+[node name="HUD" parent="CanvasLayer" index="0"]
+offset_left = 26.0
+offset_top = 124.0
+offset_right = -428.0
+offset_bottom = 221.0
+scale = Vector2(0.3, 0.3)

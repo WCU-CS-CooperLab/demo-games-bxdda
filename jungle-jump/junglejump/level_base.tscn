@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6lru7r0gi7ce"]
+[gd_scene load_steps=11 format=3 uid="uid://b6lru7r0gi7ce"]
 
 [ext_resource type="Script" path="res://level_base.gd" id="1_37h0t"]
 [ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_ya481"]
@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_pk067"]
 [ext_resource type="PackedScene" uid="uid://pqttogy4rsld" path="res://player/player.tscn" id="5_uvb80"]
 [ext_resource type="PackedScene" uid="uid://d3kf2es6e2nq5" path="res://ui/hud.tscn" id="8_1fkk0"]
+[ext_resource type="PackedScene" uid="uid://cout0w8f3be8m" path="res://enemies/enemy.tscn" id="9_qfw8e"]
 
 [sub_resource type="GDScript" id="GDScript_qmhqv"]
 script/source = "extends TileMap
@@ -62,11 +63,17 @@ format = 2
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 
-[node name="HUD" parent="." instance=ExtResource("8_1fkk0")]
-offset_left = 622.0
-offset_top = -1.0
-offset_right = 1192.0
-offset_bottom = 96.0
+[node name="Enemy" parent="." instance=ExtResource("9_qfw8e")]
+position = Vector2(154, 209)
 
-[connection signal="score_changed" from="." to="HUD" method="update_life"]
-[connection signal="life_changed" from="Player" to="HUD" method="update_life"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_1fkk0")]
+offset_left = 26.0
+offset_top = 124.0
+offset_right = -428.0
+offset_bottom = 221.0
+
+[connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_life"]
+[connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]
