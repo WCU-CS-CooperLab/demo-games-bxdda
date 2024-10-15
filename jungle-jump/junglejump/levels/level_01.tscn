@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5dmrgqoo31v"]
+[gd_scene load_steps=2 format=3 uid="uid://crixsmqoy484u"]
 
-[ext_resource type="PackedScene" uid="uid://b6lru7r0gi7ce" path="res://level_base.tscn" id="1_7wv78"]
+[ext_resource type="PackedScene" uid="uid://b6lru7r0gi7ce" path="res://level_base.tscn" id="1_uo8f1"]
 
-[node name="LevelOne" instance=ExtResource("1_7wv78")]
+[node name="LevelOne" instance=ExtResource("1_uo8f1")]
 
 [node name="World" parent="." index="1"]
 position = Vector2(-9, 0)
