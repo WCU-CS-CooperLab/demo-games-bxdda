@@ -21,4 +21,8 @@ layer_0/tile_data = PackedInt32Array(983046, 589824, 12)
 position = Vector2(22, 202)
 
 [node name="HUD" parent="CanvasLayer" index="0"]
+offset_left = 4.0
+offset_top = 147.0
+offset_right = -395.0
+offset_bottom = 244.0
 scale = Vector2(0.3, 0.3)

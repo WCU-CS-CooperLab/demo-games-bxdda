@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b74qu2cgqt3di"]
+
+[ext_resource type="PackedScene" uid="uid://cbn7uvi7ux6c1" path="res://plane.tscn" id="1_r3ab6"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="2_0qn6c"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Plane" parent="." instance=ExtResource("1_r3ab6")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.690577, 4.49774)
+script = ExtResource("2_0qn6c")
+target_path = NodePath("../Plane")
+offset = Vector3(0, 7, 20)

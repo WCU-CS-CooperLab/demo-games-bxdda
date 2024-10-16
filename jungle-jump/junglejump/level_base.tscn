@@ -70,11 +70,5 @@ position = Vector2(154, 209)
 follow_viewport_enabled = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("8_1fkk0")]
-offset_left = 26.0
-offset_top = 124.0
-offset_right = -428.0
-offset_bottom = 221.0
 
-[connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_life"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
-[connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]

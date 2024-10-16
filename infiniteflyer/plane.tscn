@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbn7uvi7ux6c1"]
+
+[ext_resource type="Script" path="res://plane.gd" id="1_of55c"]
+[ext_resource type="PackedScene" uid="uid://dkls8vcnqycg6" path="res://cartoon_plane.glb" id="2_qihis"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ahj6q"]
+size = Vector3(5.22603, 0.230957, 1.21277)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mc3yw"]
+height = 3.06912
+radius = 0.846911
+
+[node name="Plane" type="CharacterBody3D"]
+script = ExtResource("1_of55c")
+
+[node name="cartoon_plane" parent="." instance=ExtResource("2_qihis")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Nose" parent="cartoon_plane" index="0"]
+visible = false
+
+[node name="Highlights" parent="cartoon_plane" index="2"]
+visible = false
+
+[node name="Canopy" parent="cartoon_plane" index="3"]
+visible = false
+
+[node name="Propeller" parent="cartoon_plane" index="4"]
+visible = false
+
+[node name="Prop_hub" parent="cartoon_plane" index="5"]
+visible = false
+
+[node name="WingShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00164035, -0.140381, -0.462341)
+shape = SubResource("BoxShape3D_ahj6q")
+
+[node name="FuselageShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_mc3yw")
+
+[editable path="cartoon_plane"]
