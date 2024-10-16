@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b74qu2cgqt3di"]
+[gd_scene load_steps=3 format=3 uid="uid://c7fnxk0hx0ns5"]
 
-[ext_resource type="PackedScene" uid="uid://cbn7uvi7ux6c1" path="res://plane.tscn" id="1_r3ab6"]
+[ext_resource type="PackedScene" uid="uid://ch8yfmvcmk0hm" path="res://plane.tscn" id="1_r3ab6"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2_0qn6c"]
 
 [node name="Node3D" type="Node3D"]

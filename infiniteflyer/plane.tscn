@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbn7uvi7ux6c1"]
+[gd_scene load_steps=5 format=3 uid="uid://ch8yfmvcmk0hm"]
 
 [ext_resource type="Script" path="res://plane.gd" id="1_of55c"]
 [ext_resource type="PackedScene" uid="uid://dkls8vcnqycg6" path="res://cartoon_plane.glb" id="2_qihis"]
