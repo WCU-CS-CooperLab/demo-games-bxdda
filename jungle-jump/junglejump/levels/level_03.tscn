@@ -107,8 +107,8 @@ position = Vector2(2043, -190)
 [node name="Trigger" parent="Triggers" index="0" instance=ExtResource("5_fobpo")]
 position = Vector2(1860, -271)
 
-[node name="Area2D" parent="." index="16"]
-position = Vector2(61, 395)
+[node name="Bounds" parent="." index="16"]
+position = Vector2(18, 391)
 
 [node name="Area2D2" parent="." index="17" instance=ExtResource("7_84hwr")]
 position = Vector2(1183, 393)
