@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://gurmahnpcxki"]
+
+[ext_resource type="Script" path="res://levels/trigger.gd" id="1_gsfag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1utl"]
+
+[node name="Trigger" type="Area2D"]
+script = ExtResource("1_gsfag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v1utl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://pqttogy4rsld"]
+[gd_scene load_steps=16 format=3 uid="uid://pqttogy4rsld"]
 
 [ext_resource type="Texture2D" uid="uid://lqals8v555pu" path="res://assets/player_sheet.png" id="1_2q1yt"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_xtt6c"]
+[ext_resource type="AudioStream" uid="uid://cnmtgqiun2gco" path="res://assets/audio/jump4.ogg" id="3_ltrso"]
+[ext_resource type="AudioStream" uid="uid://g6ogr65lypmd" path="res://assets/audio/hurt1.ogg" id="4_c375n"]
+[ext_resource type="AudioStream" uid="uid://g6semt57nxff" path="res://assets/audio/death.mp3" id="5_06sd4"]
 
 [sub_resource type="Animation" id="Animation_orv4o"]
 length = 0.001
@@ -16,6 +19,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_wt22c"]
+resource_name = "climb"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_7v51s"]
@@ -103,6 +123,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pyi0s"]
 _data = {
 "RESET": SubResource("Animation_orv4o"),
+"climb": SubResource("Animation_wt22c"),
 "hurt": SubResource("Animation_7v51s"),
 "idle": SubResource("Animation_8784u"),
 "jump_down": SubResource("Animation_pf72k"),
@@ -112,6 +133,10 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmcsu"]
 size = Vector2(11, 22)
+
+[sub_resource type="Gradient" id="Gradient_a5die"]
+offsets = PackedFloat32Array(0.02, 1)
+colors = PackedColorArray(0.901961, 0.835294, 0.545098, 1, 1, 1, 1, 0.0313726)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -16)
@@ -138,3 +163,61 @@ shape = SubResource("RectangleShape2D_gmcsu")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 limit_top = 0
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ltrso")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_c375n")
+
+[node name="Dust" type="CPUParticles2D" parent="."]
+position = Vector2(-2, 15)
+rotation = -1.5708
+emitting = false
+amount = 60
+lifetime = 0.25
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.6
+emission_shape = 3
+emission_rect_extents = Vector2(1, 6)
+initial_velocity_max = 10.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_a5die")
+
+[node name="Dust2" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-2, 15)
+rotation = -1.5708
+amount = 15
+lifetime = 2.0
+speed_scale = 1.5
+explosiveness = 0.7
+randomness = 0.35
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 10)
+initial_velocity_max = 10.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_a5die")
+
+[node name="Dust3" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(-2, 15)
+rotation = -1.5708
+amount = 25
+lifetime = 0.5
+speed_scale = 2.0
+explosiveness = 0.7
+randomness = 0.35
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 10)
+initial_velocity_max = 10.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_a5die")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_06sd4")
+volume_db = -3.0
+pitch_scale = 1.3

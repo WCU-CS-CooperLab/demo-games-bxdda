@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3 uid="uid://cl3k5bo6y3pre"]
+
+[ext_resource type="Script" path="res://items/ladders.gd" id="1_oux11"]
+[ext_resource type="Texture2D" uid="uid://dlu3lc2egdqu8" path="res://assets/environment/tileset.png" id="2_meygx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etrud"]
+size = Vector2(20, 177.5)
+
+[node name="Ladders" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_oux11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(0, -75)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(0, -91)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(0, -106)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(0, -122)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(0, -138)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(0, -152)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(0, -160)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(0, -160)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(0, -160)
+texture = ExtResource("2_meygx")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -80.25)
+shape = SubResource("RectangleShape2D_etrud")
+
+[connection signal="body_entered" from="." to="." method="_on_ladders_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_ladders_body_exited"]

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3kf2es6e2nq5"]
+[gd_scene load_steps=12 format=3 uid="uid://d3kf2es6e2nq5"]
 
 [ext_resource type="FontFile" uid="uid://buosaulgdl55e" path="res://assets/Kenney Thick.ttf" id="1_j66er"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_ttde1"]
 [ext_resource type="Texture2D" uid="uid://tgmnul8ympk7" path="res://assets/heart.png" id="2_l4r5j"]
+[ext_resource type="AudioStream" uid="uid://cej8f54j1eki8" path="res://assets/audio/points.mp3" id="3_mixke"]
+[ext_resource type="AudioStream" uid="uid://ixumis0tmpo2" path="res://assets/audio/points2.mp3" id="4_ej8a2"]
+[ext_resource type="Texture2D" uid="uid://535j83p3d4ur" path="res://assets/sprites/gem3.png" id="6_0frt6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x2lp8"]
 font = ExtResource("1_j66er")
@@ -10,9 +13,26 @@ font_size = 48
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_afrua"]
+offsets = PackedFloat32Array(0, 0.54, 0.793333, 1)
+colors = PackedColorArray(0.941176, 0, 0, 1, 0.0666667, 0.117647, 0.541176, 1, 0.814225, 0.842743, 0.255923, 1, 0.0352941, 1, 0.0862745, 1)
+
+[sub_resource type="Animation" id="Animation_w2aix"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_nknlf"]
+resource_name = "score"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl713"]
+_data = {
+"RESET": SubResource("Animation_w2aix"),
+"score": SubResource("Animation_nknlf")
+}
+
 [node name="HUD" type="MarginContainer"]
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 97.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
@@ -26,9 +46,64 @@ layout_mode = 2
 [node name="Score" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "100
+text = "0
 "
 label_settings = SubResource("LabelSettings_x2lp8")
+
+[node name="LowEffect" type="CPUParticles2D" parent="HBoxContainer/Score"]
+position = Vector2(20, 23)
+rotation = 0.872665
+scale = Vector2(10, 1e-05)
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.05
+randomness = 0.4
+gravity = Vector2(0, 1000)
+angular_velocity_min = -58.18
+angular_velocity_max = 87.27
+orbit_velocity_min = -121.21
+orbit_velocity_max = 686.87
+scale_amount_min = 0.5
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_afrua")
+anim_speed_min = 9.05
+anim_speed_max = 96.16
+
+[node name="HighEffect" type="CPUParticles2D" parent="HBoxContainer/Score"]
+position = Vector2(20, 23)
+rotation = 0.872665
+scale = Vector2(10, 1e-05)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 0.05
+randomness = 0.4
+gravity = Vector2(0, 1000)
+angular_velocity_min = -58.18
+angular_velocity_max = 87.27
+orbit_velocity_min = -80.81
+orbit_velocity_max = 80.81
+scale_amount_min = 0.5
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_afrua")
+anim_speed_min = 9.05
+anim_speed_max = 96.16
+
+[node name="Points" type="AudioStreamPlayer2D" parent="HBoxContainer/Score"]
+stream = ExtResource("3_mixke")
+volume_db = -15.0
+pitch_scale = 0.85
+
+[node name="Points2" type="AudioStreamPlayer2D" parent="HBoxContainer/Score"]
+stream = ExtResource("4_ej8a2")
+volume_db = 1.981
+pitch_scale = 0.85
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/Score"]
+libraries = {
+"": SubResource("AnimationLibrary_wl713")
+}
 
 [node name="LifeCounter" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -58,4 +133,81 @@ stretch_mode = 5
 [node name="L5" type="TextureRect" parent="HBoxContainer/LifeCounter"]
 layout_mode = 2
 texture = ExtResource("2_l4r5j")
+stretch_mode = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Gems" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+label_settings = SubResource("LabelSettings_x2lp8")
+
+[node name="LowEffect" type="CPUParticles2D" parent="HBoxContainer2/Gems"]
+position = Vector2(20, 23)
+rotation = 0.872665
+scale = Vector2(10, 1e-05)
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 0.05
+randomness = 0.4
+gravity = Vector2(0, 1000)
+angular_velocity_min = -58.18
+angular_velocity_max = 87.27
+orbit_velocity_min = -121.21
+orbit_velocity_max = 686.87
+scale_amount_min = 0.5
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_afrua")
+anim_speed_min = 9.05
+anim_speed_max = 96.16
+
+[node name="HighEffect" type="CPUParticles2D" parent="HBoxContainer2/Gems"]
+position = Vector2(20, 23)
+rotation = 0.872665
+scale = Vector2(10, 1e-05)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 0.05
+randomness = 0.4
+gravity = Vector2(0, 1000)
+angular_velocity_min = -58.18
+angular_velocity_max = 87.27
+orbit_velocity_min = -80.81
+orbit_velocity_max = 80.81
+scale_amount_min = 0.5
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_afrua")
+anim_speed_min = 9.05
+anim_speed_max = 96.16
+
+[node name="Gems" type="AudioStreamPlayer2D" parent="HBoxContainer2/Gems"]
+stream = ExtResource("3_mixke")
+volume_db = -15.0
+pitch_scale = 0.85
+
+[node name="Gems2" type="AudioStreamPlayer2D" parent="HBoxContainer2/Gems"]
+stream = ExtResource("4_ej8a2")
+volume_db = 1.981
+pitch_scale = 0.85
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer2/Gems"]
+libraries = {
+"": SubResource("AnimationLibrary_wl713")
+}
+
+[node name="LifeCounter" type="HBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="L1" type="TextureRect" parent="HBoxContainer2/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("6_0frt6")
 stretch_mode = 5

@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdww16lpuhhde"]
+
+[ext_resource type="Texture2D" uid="uid://dlu3lc2egdqu8" path="res://assets/environment/tileset.png" id="1_0otp5"]
+[ext_resource type="Script" path="res://items/ladders.gd" id="1_37323"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_etrud"]
+size = Vector2(20, 63)
+
+[node name="Ladders" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_37323")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0otp5")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+texture = ExtResource("1_0otp5")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -30)
+texture = ExtResource("1_0otp5")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
+texture = ExtResource("1_0otp5")
+region_enabled = true
+region_rect = Rect2(111.956, 159.702, 16.3125, 16.5667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -21.5)
+shape = SubResource("RectangleShape2D_etrud")
+
+[connection signal="body_entered" from="." to="." method="_on_ladders_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_ladders_body_exited"]
