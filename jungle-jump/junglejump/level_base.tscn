@@ -346,7 +346,7 @@ autoplay = true
 
 [node name="Triggers" type="Node2D" parent="."]
 
-[node name="Bounds" parent="." instance=ExtResource("12_n3p8b")]
+[node name="Area2D" parent="." instance=ExtResource("12_n3p8b")]
 
 [connection signal="gems_changed" from="." to="CanvasLayer/HUD" method="update_gems"]
 [connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]

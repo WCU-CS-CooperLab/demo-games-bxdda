@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ciw05dkop7dim"]
+[gd_scene load_steps=7 format=3 uid="uid://ciw05dkop7dim"]
 
 [ext_resource type="PackedScene" uid="uid://b6lru7r0gi7ce" path="res://level_base.tscn" id="1_x0dfl"]
 [ext_resource type="PackedScene" uid="uid://d2jolbd6akoxh" path="res://assets/moving_platform.tscn" id="2_u3r8t"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cl3k5bo6y3pre" path="res://items/ladders2.tscn" id="4_sg0v5"]
 [ext_resource type="PackedScene" uid="uid://b7yt3jxfi2rip" path="res://items/item.tscn" id="5_346f6"]
 [ext_resource type="PackedScene" uid="uid://cout0w8f3be8m" path="res://enemies/enemy.tscn" id="6_f22yw"]
-[ext_resource type="PackedScene" uid="uid://cajrabp5mhim7" path="res://levels/bounds.tscn" id="7_ry34v"]
 
 [node name="LevelOne" instance=ExtResource("1_x0dfl")]
 
@@ -77,10 +76,7 @@ position = Vector2(65, 503)
 [node name="Enemy2" parent="Triggers" index="0" instance=ExtResource("6_f22yw")]
 position = Vector2(583, 502)
 
-[node name="Bounds" parent="." index="16"]
-position = Vector2(8, 574)
-
-[node name="Bounds2" parent="." index="17" instance=ExtResource("7_ry34v")]
-position = Vector2(1160, 574)
+[node name="Area2D" parent="." index="16"]
+position = Vector2(10, 657)
 
 [connection signal="died" from="Triggers/Enemy2" to="." method="_on_enemy_died"]
