@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6lru7r0gi7ce"]
+
+[ext_resource type="Script" path="res://level_base.gd" id="1_37h0t"]
+[ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_ya481"]
+[ext_resource type="Texture2D" uid="uid://elfqj4ni4jxs" path="res://assets/environment/back.png" id="2_jldb2"]
+[ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="2_v2coc"]
+[ext_resource type="Texture2D" uid="uid://c74m2qnljojh0" path="res://assets/environment/middle.png" id="3_kfodu"]
+[ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_pk067"]
+[ext_resource type="PackedScene" uid="uid://pqttogy4rsld" path="res://player/player.tscn" id="5_uvb80"]
+[ext_resource type="PackedScene" uid="uid://d3kf2es6e2nq5" path="res://ui/hud.tscn" id="8_1fkk0"]
+[ext_resource type="PackedScene" uid="uid://cout0w8f3be8m" path="res://enemies/enemy.tscn" id="9_qfw8e"]
+[ext_resource type="AudioStream" uid="uid://0k12smxu6w0h" path="res://assets/audio/Grasslands Theme.ogg" id="10_o56g1"]
+
+[sub_resource type="GDScript" id="GDScript_qmhqv"]
+script/source = "extends TileMap
+
+var items = preload(\"res://items/item.tscn\")
+
+func _ready():
+	var r = items.instantiate()
+	r.init(\"cherry\", self.position)"
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_37h0t")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(576, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(880, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(0, 124)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 880, 368)
+
+[node name="World" type="TileMap" parent="."]
+tile_set = ExtResource("1_ya481")
+format = 2
+
+[node name="Items" type="TileMap" parent="."]
+tile_set = ExtResource("2_v2coc")
+format = 2
+script = SubResource("GDScript_qmhqv")
+
+[node name="Danger" type="TileMap" parent="." groups=["danger"]]
+tile_set = ExtResource("3_pk067")
+format = 2
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("5_uvb80")]
+
+[node name="Enemy" parent="." instance=ExtResource("9_qfw8e")]
+position = Vector2(154, 209)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_1fkk0")]
+
+[node name="ThemeMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_o56g1")
+autoplay = true
+
+[node name="Ladders" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]
+[connection signal="body_entered" from="Ladders" to="." method="_on_ladders_body_entered"]
+[connection signal="body_exited" from="Ladders" to="." method="_on_ladders_body_exited"]

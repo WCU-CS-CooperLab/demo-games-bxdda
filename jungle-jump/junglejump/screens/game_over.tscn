@@ -1,17 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsmwg5dfh6h42"]
+[gd_scene load_steps=11 format=3 uid="uid://dk6tafixwtdh2"]
 
-[ext_resource type="Script" path="res://screens/title_screen.gd" id="1_8oyr6"]
-[ext_resource type="Texture2D" uid="uid://elfqj4ni4jxs" path="res://assets/environment/back.png" id="1_fkd2f"]
-[ext_resource type="Texture2D" uid="uid://c74m2qnljojh0" path="res://assets/environment/middle.png" id="2_pyodm"]
-[ext_resource type="FontFile" uid="uid://buosaulgdl55e" path="res://assets/Kenney Thick.ttf" id="3_nd80q"]
-[ext_resource type="AudioStream" uid="uid://cc3xlhl6piq6u" path="res://assets/audio/Intro Theme.ogg" id="5_it2f7"]
+[ext_resource type="Script" path="res://screens/game_over.gd" id="1_p0oqh"]
+[ext_resource type="Texture2D" uid="uid://elfqj4ni4jxs" path="res://assets/environment/back.png" id="2_aet6q"]
+[ext_resource type="Texture2D" uid="uid://c74m2qnljojh0" path="res://assets/environment/middle.png" id="3_aofnd"]
+[ext_resource type="FontFile" uid="uid://buosaulgdl55e" path="res://assets/Kenney Thick.ttf" id="4_ap40h"]
+[ext_resource type="AudioStream" uid="uid://cc3xlhl6piq6u" path="res://assets/audio/Intro Theme.ogg" id="5_vttbb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_go3a7"]
-font = ExtResource("3_nd80q")
+font = ExtResource("4_ap40h")
 font_size = 72
 
 [sub_resource type="LabelSettings" id="LabelSettings_or7ac"]
-font = ExtResource("3_nd80q")
+font = ExtResource("4_ap40h")
 font_size = 48
 
 [sub_resource type="Animation" id="Animation_rmfey"]
@@ -57,7 +57,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8oyr6")
+script = ExtResource("1_p0oqh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -66,7 +66,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_fkd2f")
+texture = ExtResource("2_aet6q")
 stretch_mode = 6
 
 [node name="TextureRect2" type="TextureRect" parent="."]
@@ -75,7 +75,7 @@ offset_left = -64.0
 offset_top = 291.0
 offset_right = 1189.0
 offset_bottom = 659.0
-texture = ExtResource("2_pyodm")
+texture = ExtResource("3_aofnd")
 stretch_mode = 1
 
 [node name="Title" type="Label" parent="."]
@@ -85,10 +85,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -306.0
-offset_top = -430.0
-offset_right = 414.0
-offset_bottom = -349.0
+offset_left = -360.0
+offset_top = -40.5
+offset_right = 360.0
+offset_bottom = 40.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Jungle Jump"
@@ -106,8 +106,10 @@ offset_top = -54.0
 offset_right = 417.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Press Space to Play"
+text = "GAME OVER
+PRESS SPACE TO RESTART"
 label_settings = SubResource("LabelSettings_or7ac")
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -115,5 +117,7 @@ libraries = {
 }
 autoplay = "intro"
 
-[node name="IntroMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_it2f7")
+[node name="GameoverMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vttbb")
+volume_db = -1.981
+pitch_scale = 0.32

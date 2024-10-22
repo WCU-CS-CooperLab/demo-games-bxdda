@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7yt3jxfi2rip"]
+[gd_scene load_steps=8 format=3 uid="uid://r0shhhe8gup8"]
 
-[ext_resource type="Script" path="res://items/item.gd" id="1_4ajqi"]
-[ext_resource type="Texture2D" uid="uid://c8h2xsrgnbhxd" path="res://assets/sprites/cherry.png" id="1_x32qa"]
+[ext_resource type="Script" path="res://items/item.gd" id="1_k31km"]
+[ext_resource type="Texture2D" uid="uid://c8h2xsrgnbhxd" path="res://assets/sprites/cherry.png" id="2_kguh3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xc4x2"]
 
@@ -62,14 +62,15 @@ _data = {
 }
 
 [node name="Item" type="Area2D"]
+visible = false
 top_level = true
 collision_layer = 8
-collision_mask = 6
-script = ExtResource("1_4ajqi")
+collision_mask = 2
+script = ExtResource("1_k31km")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 show_behind_parent = true
-texture = ExtResource("1_x32qa")
+texture = ExtResource("2_kguh3")
 hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

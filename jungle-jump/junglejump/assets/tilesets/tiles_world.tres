@@ -55,8 +55,6 @@ texture = ExtResource("1_4qlxr")
 17:9/0 = 0
 19:9/0 = 0
 19:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-7:10/0 = 0
-7:10/0/custom_data_0 = "ladder"
 10:10/0 = 0
 11:10/0 = 0
 15:11/0 = 0
@@ -171,6 +169,10 @@ texture = ExtResource("1_4qlxr")
 1:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-23, -8, 8, -8, 8, 24, -12.5, 11.5)
 3:1/0 = 0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+22:6/0 = 0
+7:9/size_in_atlas = Vector2i(1, 2)
+7:9/0 = 0
+7:9/0/custom_data_0 = "ladder"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vfjq7"]
 texture = ExtResource("2_pelyq")

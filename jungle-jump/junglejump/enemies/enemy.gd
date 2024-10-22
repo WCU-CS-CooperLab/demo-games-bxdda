@@ -1,8 +1,14 @@
 extends CharacterBody2D
 
+signal died
+var is_dead = false
 @export var speed := 10
 @export var gravity := 900
 var facing := 1
+var mouth = 0
+
+#func _ready():
+	
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
@@ -20,8 +26,15 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 
-func take_damage():
+func take_damage(): 
+	if is_dead:
+		return  # Prevent further damage processing, 
+		#for some reason i was getting multiple calls of either the died signal, 
+		#or the score increasing, so score was going up by more than 100 points
+	is_dead = true
+	died.emit()
 	$AnimationPlayer.play("death")
+	$HurtSound.play()
 	$CollisionShape2D.set_deferred("disabled", true)
 	set_physics_process(false)
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cout0w8f3be8m"]
+[gd_scene load_steps=11 format=3 uid="uid://cout0w8f3be8m"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_2arc5"]
 [ext_resource type="Texture2D" uid="uid://dgkdmkfv4f65q" path="res://assets/sprites/enemy-death.png" id="2_oyuon"]
 [ext_resource type="Texture2D" uid="uid://busymq06xkvl4" path="res://assets/sprites/opossum.png" id="2_r5fnq"]
+[ext_resource type="AudioStream" uid="uid://dwgcaa0q16610" path="res://assets/audio/enemy_hit.ogg" id="4_4epxk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgcln"]
 size = Vector2(32, 17)
@@ -100,6 +101,10 @@ _data = {
 "walk": SubResource("Animation_n43jf")
 }
 
+[sub_resource type="Gradient" id="Gradient_q0gck"]
+offsets = PackedFloat32Array(0.02, 1)
+colors = PackedColorArray(0.901961, 0.835294, 0.545098, 1, 1, 1, 1, 0.0313726)
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 7
@@ -118,5 +123,23 @@ libraries = {
 "": SubResource("AnimationLibrary_l2acr")
 }
 autoplay = "walk"
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4epxk")
+
+[node name="Dust2" type="CPUParticles2D" parent="."]
+position = Vector2(-6, 12)
+rotation = -1.5708
+amount = 15
+lifetime = 2.0
+speed_scale = 1.5
+explosiveness = 0.7
+randomness = 0.35
+emission_shape = 2
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 10)
+initial_velocity_max = 10.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_q0gck")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

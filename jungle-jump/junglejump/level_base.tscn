@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6lru7r0gi7ce"]
+[gd_scene load_steps=13 format=3 uid="uid://b6lru7r0gi7ce"]
 
 [ext_resource type="Script" path="res://level_base.gd" id="1_37h0t"]
 [ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="1_ya481"]
@@ -7,17 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://c74m2qnljojh0" path="res://assets/environment/middle.png" id="3_kfodu"]
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="3_pk067"]
 [ext_resource type="PackedScene" uid="uid://pqttogy4rsld" path="res://player/player.tscn" id="5_uvb80"]
+[ext_resource type="PackedScene" uid="uid://dm3mg4l0mbao0" path="res://items/door.tscn" id="5_y061j"]
 [ext_resource type="PackedScene" uid="uid://d3kf2es6e2nq5" path="res://ui/hud.tscn" id="8_1fkk0"]
 [ext_resource type="PackedScene" uid="uid://cout0w8f3be8m" path="res://enemies/enemy.tscn" id="9_qfw8e"]
-
-[sub_resource type="GDScript" id="GDScript_qmhqv"]
-script/source = "extends TileMap
-
-var items = preload(\"res://items/item.tscn\")
-
-func _ready():
-	var r = items.instantiate()
-	r.init(\"cherry\", self.position)"
+[ext_resource type="AudioStream" uid="uid://0k12smxu6w0h" path="res://assets/audio/Grasslands Theme.ogg" id="10_o56g1"]
+[ext_resource type="PackedScene" uid="uid://cajrabp5mhim7" path="res://levels/bounds.tscn" id="12_n3p8b"]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_37h0t")
@@ -33,6 +27,194 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_jldb2")
 centered = false
 
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1152, -2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+
+[node name="Sprite2D13" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-1153, -2)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1155, -173)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1155, -173)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(4, -171)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(16, -297)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1167, -292)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1169, -437)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(15, -435)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(3, -604)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D11" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1164, -606)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D12" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1164, -606)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D14" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1161, -764)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D15" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1161, -764)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D16" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(11, -767)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D17" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(11, -767)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D18" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(8, -935)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D19" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(8, -935)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D20" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1162, -932)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D21" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1162, -932)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D22" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1167, -1103)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D23" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1181, -1227)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D24" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(16, -1103)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
+[node name="Sprite2D25" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(16, -1103)
+scale = Vector2(1.53003, 1.5)
+texture = ExtResource("2_jldb2")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 383, 114)
+
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(880, 0)
@@ -46,20 +228,95 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 880, 368)
 
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(-2197, 108)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 880, 368)
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(4, 398)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 86, 880, 282)
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(-2, 814)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 147, 880, 221)
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(-2, 814)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 147, 880, 221)
+
+[node name="Sprite2D6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(4, 1142)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 147, 880, 221)
+
+[node name="Sprite2D7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(4, 1470)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 147, 880, 221)
+
+[node name="Sprite2D8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(4, 1770)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 147, 880, 221)
+
+[node name="Sprite2D9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_repeat = 3
+position = Vector2(4, 1770)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_kfodu")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 147, 880, 221)
+
 [node name="World" type="TileMap" parent="."]
 tile_set = ExtResource("1_ya481")
 format = 2
 
+[node name="Door" parent="." instance=ExtResource("5_y061j")]
+
 [node name="Items" type="TileMap" parent="."]
 tile_set = ExtResource("2_v2coc")
 format = 2
-script = SubResource("GDScript_qmhqv")
 
 [node name="Danger" type="TileMap" parent="." groups=["danger"]]
 tile_set = ExtResource("3_pk067")
 format = 2
 
-[node name="Player" parent="." instance=ExtResource("5_uvb80")]
+[node name="LaddersGroup" type="Node2D" parent="."]
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("5_uvb80")]
 
 [node name="SpawnPoint" type="Marker2D" parent="."]
 
@@ -67,8 +324,32 @@ format = 2
 position = Vector2(154, 209)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("8_1fkk0")]
+offset_left = -1.0
+offset_top = -14.0
+offset_right = -334.0
+offset_bottom = 246.0
 
+[node name="ThemeMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_o56g1")
+pitch_scale = 0.95
+autoplay = true
+
+[node name="ItemsGroup" type="Node2D" parent="."]
+
+[node name="GemsGroup" type="Node2D" parent="."]
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="HiddenGems" type="Node2D" parent="."]
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="Area2D" parent="." instance=ExtResource("12_n3p8b")]
+
+[connection signal="gems_changed" from="." to="CanvasLayer/HUD" method="update_gems"]
+[connection signal="score_changed" from="." to="CanvasLayer/HUD" method="update_score"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="life_changed" from="Player" to="CanvasLayer/HUD" method="update_life"]
+[connection signal="died" from="Enemy" to="." method="_on_enemy_died"]
