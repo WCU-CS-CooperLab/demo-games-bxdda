@@ -25,7 +25,7 @@ rock_scene = ExtResource("2_etslb")
 enemy_scene = ExtResource("3_lhtlv")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(455, -1199)
+position = Vector2(457, -1199)
 scale = Vector2(1.5849, 4.93889)
 texture = ExtResource("1_ctspg")
 script = ExtResource("5_17mfk")
@@ -54,6 +54,10 @@ one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("5_3mxc2")]
 
+[node name="ItemList" parent="HUD/MarginContainer/HBoxContainer/MenuButton" index="1"]
+offset_left = 236.0
+offset_right = 901.0
+
 [node name="EnemyTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -73,4 +77,8 @@ stream = ExtResource("10_c0d3y")
 [connection signal="shield_changed" from="Player" to="HUD" method="update_shield"]
 [connection signal="timeout" from="Player/InvulnerabilityTimer" to="Player" method="_on_invulnerability_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="pressed" from="HUD/MarginContainer/HBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="HUD/MarginContainer/HBoxContainer/MenuButton" to="HUD/MarginContainer/HBoxContainer/MenuButton" method="_on_pressed"]
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+
+[editable path="HUD"]

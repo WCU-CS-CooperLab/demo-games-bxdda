@@ -101,3 +101,8 @@ func _on_enemy_timer_timeout():
 	e.target = $Player
 	e.exploded.connect(self._on_enemy_exploded)
 	$EnemyTimer.start(randf_range(20, 40))
+
+
+func _on_menu_button_pressed() -> void:
+	if playing:
+		get_tree().paused = not get_tree().paused

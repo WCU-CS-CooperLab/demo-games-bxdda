@@ -52,3 +52,7 @@ func _on_timer_timeout():
 
 func update_health(value):
 	health_bar.value = value
+
+
+func _on_menu_button_pressed() -> void:
+	pass # Replace with function body.
