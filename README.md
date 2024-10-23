@@ -4,7 +4,7 @@ A template repository to publish games
 
 [Mini_Golf](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/mini_golf/3D.html)
 
-[Jungle_Jump (Main_scene)](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/jungle_jump/JungleJump.html)
+[Jungle_Jump](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/jungle_jump/JungleJump.html)
 
 [Space Rocks)](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/space_rocks/SpaceRocks.html)
 
