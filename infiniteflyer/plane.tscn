@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch8yfmvcmk0hm"]
+[gd_scene load_steps=11 format=3 uid="uid://ch8yfmvcmk0hm"]
 
 [ext_resource type="Script" path="res://plane.gd" id="1_of55c"]
 [ext_resource type="PackedScene" uid="uid://dkls8vcnqycg6" path="res://cartoon_plane.glb" id="2_qihis"]
+[ext_resource type="Texture2D" uid="uid://bid47uhakf3fg" path="res://smoke/smoke_01.png" id="3_bjrow"]
+[ext_resource type="Texture2D" uid="uid://djvonf6dhfceg" path="res://smoke/smoke_02.png" id="4_s0edd"]
+[ext_resource type="Texture2D" uid="uid://dptyr6xsbquft" path="res://smoke/smoke_03.png" id="5_heqka"]
+[ext_resource type="Texture2D" uid="uid://biloub0jloxsj" path="res://smoke/smoke_04.png" id="6_kopim"]
+[ext_resource type="Texture2D" uid="uid://bbt3avscu7gj1" path="res://smoke/smoke_05.png" id="7_c6ch6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahj6q"]
 size = Vector3(5.22603, 0.230957, 1.21277)
@@ -10,28 +15,36 @@ size = Vector3(5.22603, 0.230957, 1.21277)
 height = 3.06912
 radius = 0.846911
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwve8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bjrow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s0edd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_heqka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kopim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_c6ch6")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Plane" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_of55c")
 
 [node name="cartoon_plane" parent="." instance=ExtResource("2_qihis")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="Nose" parent="cartoon_plane" index="0"]
-visible = false
-
-[node name="Highlights" parent="cartoon_plane" index="2"]
-visible = false
-
-[node name="Canopy" parent="cartoon_plane" index="3"]
-visible = false
-
-[node name="Propeller" parent="cartoon_plane" index="4"]
-visible = false
-
-[node name="Prop_hub" parent="cartoon_plane" index="5"]
-visible = false
 
 [node name="WingShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.00164035, -0.140381, -0.462341)
@@ -40,5 +53,13 @@ shape = SubResource("BoxShape3D_ahj6q")
 [node name="FuselageShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_mc3yw")
+
+[node name="Explosion" type="AnimatedSprite3D" parent="."]
+visible = false
+pixel_size = 0.5
+billboard = 1
+sprite_frames = SubResource("SpriteFrames_cwve8")
+frame = 4
+frame_progress = 1.0
 
 [editable path="cartoon_plane"]

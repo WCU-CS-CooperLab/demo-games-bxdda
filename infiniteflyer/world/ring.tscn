@@ -19,6 +19,8 @@ inner_radius = 3.5
 outer_radius = 4.0
 
 [node name="Ring" type="Area3D"]
+collision_layer = 4
+collision_mask = 6
 script = ExtResource("1_pb3o6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -34,3 +36,5 @@ billboard = 1
 text = "100
 "
 font = ExtResource("2_4hwcn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,10 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxsoffi5q8c26"]
+[gd_scene load_steps=10 format=3 uid="uid://bxsoffi5q8c26"]
 
+[ext_resource type="Texture2D" uid="uid://uc56iuo1h5h0" path="res://styled_sky_sml.hdr" id="1_50v0u"]
+[ext_resource type="Script" path="res://main.gd" id="1_klx47"]
 [ext_resource type="PackedScene" uid="uid://ch8yfmvcmk0hm" path="res://plane.tscn" id="1_q2p2c"]
 [ext_resource type="PackedScene" uid="uid://bgmsbjxhbomp7" path="res://world/Chunk.tscn" id="2_e6xs2"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="4_bpkug"]
+[ext_resource type="PackedScene" uid="uid://c8otntjcdimyg" path="res://ui.tscn" id="6_elpci"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7evfl"]
+panorama = ExtResource("1_50v0u")
+
+[sub_resource type="Sky" id="Sky_0e68o"]
+sky_material = SubResource("PanoramaSkyMaterial_7evfl")
+
+[sub_resource type="Environment" id="Environment_uvvfu"]
+background_mode = 2
+sky = SubResource("Sky_0e68o")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_klx47")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uvvfu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
 
 [node name="Plane" parent="." instance=ExtResource("1_q2p2c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.58084, 0)
 
 [node name="Chunk" parent="." instance=ExtResource("2_e6xs2")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.89824, 9.25485)
+script = ExtResource("4_bpkug")
+target_path = NodePath("../Plane")
+offset = Vector3(0, 7, 17)
+
+[node name="UI" parent="." instance=ExtResource("6_elpci")]
+
+[connection signal="fuel_changed" from="Plane" to="UI" method="update_fuel"]
+[connection signal="score_changed" from="Plane" to="UI" method="update_score"]
+
+[editable path="Plane"]
+[editable path="Plane/cartoon_plane"]
