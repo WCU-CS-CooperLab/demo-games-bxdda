@@ -1,5 +1,7 @@
 # GamePublish
 A template repository to publish games
+
+
 [Infinite_Flyer](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/infinite_flyer/InfiniteFlyer.html)
 
 [Mini_Golf](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/mini_golf/3D.html)
