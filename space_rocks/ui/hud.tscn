@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0q1kv7u1wqw2"]
+[gd_scene load_steps=16 format=3 uid="uid://d0q1kv7u1wqw2"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_0xvxu"]
 [ext_resource type="Texture2D" uid="uid://4jqunvr7ju5r" path="res://ui/settings.png" id="2_ii6sw"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://c4nc3j6s4m3os" path="res://assets/play_button_h.png" id="5_na5a7"]
 [ext_resource type="Texture2D" uid="uid://cx0rki5o4ma0g" path="res://assets/health.png" id="6_0klhw"]
 [ext_resource type="Texture2D" uid="uid://ct07ntf3bshct" path="res://assets/bar_red_200.png" id="7_u7p2w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2thks"]
+font = ExtResource("2_lrrho")
+font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_hh2cf"]
 font = ExtResource("2_lrrho")
@@ -58,6 +62,81 @@ item_count = 3
 item_0/text = "SETTINGS"
 item_1/text = "CONTROLS"
 item_2/text = "EXIT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MenuButton/ItemList"]
+visible = false
+layout_mode = 0
+offset_left = 11.0
+offset_top = 158.0
+offset_right = 313.0
+offset_bottom = 389.0
+
+[node name="VOLUME" type="Label" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer"]
+layout_mode = 2
+text = "VOLUME
+"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer"]
+layout_mode = 2
+min_value = -80.0
+max_value = 0.0
+tick_count = 6
+
+[node name="FULLSCREEN" type="Label" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer"]
+layout_mode = 2
+text = "FULLSCREEN
+"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MenuButton/ItemList"]
+visible = false
+layout_mode = 0
+offset_left = 347.0
+offset_top = 160.0
+offset_right = 649.0
+offset_bottom = 391.0
+
+[node name="VSYNC" type="Label" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer2"]
+layout_mode = 2
+text = "VSYNC
+"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer2"]
+layout_mode = 2
+
+[node name="RESOLUTION" type="Label" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer2"]
+layout_mode = 2
+text = "RESOLUTION
+"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer2"]
+layout_mode = 2
+item_count = 1
+
+[node name="ItemList2" type="ItemList" parent="MarginContainer/HBoxContainer/MenuButton"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 88.0
+offset_right = 899.0
+offset_bottom = 506.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/MenuButton/ItemList2"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 110.0
+offset_right = 571.0
+offset_bottom = 411.0
+text = "THRUST - W OR UP ARROW
+ROTATE - A/LEFT OR D/RIGHT
+BOOST - SHIFT
+SHOOT - E
+RESTORE LIFE (500 PTS) - ~
+
+PAUSE - P
+MENU - ESC"
+label_settings = SubResource("LabelSettings_2thks")
 
 [node name="Score" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -133,6 +212,11 @@ horizontal_alignment = 1
 wait_time = 2.0
 one_shot = true
 
-[connection signal="item_activated" from="MarginContainer/HBoxContainer/MenuButton/ItemList" to="MarginContainer/HBoxContainer/MenuButton" method="_on_item_list_item_activated"]
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/MenuButton/ItemList" to="MarginContainer/HBoxContainer/MenuButton" method="_on_item_list_item_activated"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer/HSlider" to="MarginContainer/HBoxContainer/MenuButton" method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer/CheckBox" to="MarginContainer/HBoxContainer/MenuButton" method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer2/CheckBox" to="MarginContainer/HBoxContainer/MenuButton" method="_on_vsync_toggled"]
+[connection signal="item_selected" from="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer2/OptionButton" to="MarginContainer/HBoxContainer/MenuButton" method="_on_res_item_selected"]
+[connection signal="empty_clicked" from="MarginContainer/HBoxContainer/MenuButton/ItemList2" to="MarginContainer/HBoxContainer/MenuButton" method="_on_item_list_2_empty_clicked"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

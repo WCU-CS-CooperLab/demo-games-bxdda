@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://dk6c1skb8vqk6"]
+
+[ext_resource type="Script" path="res://power_up.gd" id="1_8jgqk"]
+[ext_resource type="Texture2D" uid="uid://cx0rki5o4ma0g" path="res://assets/health.png" id="2_yseio"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ak5pn"]
+blend_mode = 4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ld2sj"]
+radius = 27.2479
+
+[sub_resource type="Animation" id="Animation_x6etu"]
+resource_name = "powerup"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, -4), Vector2(0, -6), Vector2(0, -6), Vector2(0, -3), Vector2(0, -2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.5, 0.6, 0.7, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.02, 1.02), Vector2(1.04, 1.04), Vector2(1.05, 1.05), Vector2(1.2, 1.2), Vector2(1.06, 1.06), Vector2(1.02, 1.02), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6mq6n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.02, 1.02)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdla1"]
+_data = {
+"RESET": SubResource("Animation_6mq6n"),
+"powerup": SubResource("Animation_x6etu")
+}
+
+[node name="PowerUp" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_8jgqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_ak5pn")
+scale = Vector2(1.02, 1.02)
+texture = ExtResource("2_yseio")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["power_ups"]]
+position = Vector2(0, -3)
+scale = Vector2(0.991581, 0.991581)
+shape = SubResource("CircleShape2D_ld2sj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qdla1")
+}
+autoplay = "powerup"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

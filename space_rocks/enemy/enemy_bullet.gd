@@ -18,6 +18,8 @@ func _on_body_entered(body):
 		$Explosion/AnimationPlayer.speed_scale = 1.5
 		$Explosion/AnimationPlayer.play("explosion")
 		await $Explosion/AnimationPlayer.animation_finished
+	if body.is_in_group("rocks"):
+		body.explode()
 	queue_free()
 	
 

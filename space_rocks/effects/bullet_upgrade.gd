@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var speed = 1000
-
+@export var speed = 2000
+var pen = 0
 var velocity = Vector2.ZERO
 
 func start(_transform):
@@ -12,7 +12,7 @@ func start(_transform):
 func startDir(_transform, direction):
 	transform = _transform
 	velocity = direction * 20
-	
+
 func _process(delta):
 		position += velocity * delta
 
@@ -23,13 +23,15 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("rocks"):
+		pen += 1
 		body.explode()
+	if (pen >= 3):
 		queue_free()
 
 
 func _on_area_entered(area):
 		if area.is_in_group("enemies"):
-			area.take_damage(1)
+			area.take_damage(3)
 			$Explosion.show()
 			$Explosion/ExplosionSound.pitch_scale = 0.2
 			$Explosion/ExplosionSound.play()

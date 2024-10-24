@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4a3ct6sv2ogx"]
+[gd_scene load_steps=15 format=3 uid="uid://b4a3ct6sv2ogx"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_d7pas"]
 [ext_resource type="Texture2D" uid="uid://wtprn3nms74y" path="res://assets/player_ship.png" id="1_u0lav"]
 [ext_resource type="PackedScene" uid="uid://dw3k4liers6en" path="res://effects/bullet.tscn" id="2_4x6nd"]
+[ext_resource type="PackedScene" uid="uid://dkmbv1qlcrwi1" path="res://effects/bullet_upgrade.tscn" id="3_av5wf"]
 [ext_resource type="AudioStream" uid="uid://d3h8qa6cqvvj6" path="res://assets/sounds/laser.ogg" id="4_b1bc8"]
 [ext_resource type="AudioStream" uid="uid://bmd0h32nuicl5" path="res://assets/sounds/engine.ogg" id="5_q1h03"]
 [ext_resource type="AudioStream" uid="uid://cw48tw88o6uyl" path="res://assets/sounds/explosion.wav" id="6_b5byu"]
+[ext_resource type="AudioStream" uid="uid://bwg1ypwrcpirh" path="res://assets/sounds/powerup.mp3" id="8_6815d"]
+[ext_resource type="AudioStream" uid="uid://qnkfhmt38282" path="res://assets/sounds/levelup.ogg" id="9_7lwe7"]
+[ext_resource type="Script" path="res://player/bomb.gd" id="10_m7yfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shusl"]
 radius = 34.0
@@ -18,12 +22,18 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.533333, 0.986667)
 colors = PackedColorArray(0.685426, 0.514053, 0.128493, 1, 0.93, 0.30225, 0.1767, 1, 0.862745, 0.0431373, 0.141176, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4wae"]
+radius = 171.172
+
 [node name="Player" type="RigidBody2D" groups=["players"]]
 position = Vector2(0, 1)
+collision_layer = 2
+collision_mask = 13
 linear_damp = 1.0
 angular_damp = 5.0
 script = ExtResource("1_d7pas")
 bullet_scene = ExtResource("2_4x6nd")
+bullet_scene2 = ExtResource("3_av5wf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -42,6 +52,11 @@ autostart = true
 
 [node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_b1bc8")
+
+[node name="LaserSound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_b1bc8")
+volume_db = 0.2
+pitch_scale = 0.8
 
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_q1h03")
@@ -101,5 +116,25 @@ color_ramp = SubResource("Gradient_omwsc")
 
 [node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_b5byu")
+
+[node name="PowerUpTimer" type="Timer" parent="."]
+
+[node name="PowerupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_6815d")
+volume_db = 5.0
+parameters/looping = true
+
+[node name="CollectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7lwe7")
+volume_db = 5.0
+parameters/looping = true
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("10_m7yfq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_m4wae")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 
 [connection signal="timeout" from="GunCooldown" to="." method="_on_gun_cooldown_timeout"]
