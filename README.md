@@ -8,7 +8,7 @@ A template repository to publish games
 
 [Jungle_Jump](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/jungle_jump/JungleJump.html)
 
-[Space Rocks)](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/space_rocks/SpaceRocks.html)
+[Space Rocks](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/space_rocks/SpaceRocks.html)
 
 
 [Player_scene](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/player_scene/index.html)
