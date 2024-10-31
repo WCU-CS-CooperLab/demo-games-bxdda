@@ -13,7 +13,7 @@ func _physics_process(delta):
 	if explosion_active:
 		# Increase the radius gradually
 		radius += expansion_speed * delta
-		$CollisionShape2D2.radius = radius
+		$CollisionShape2D2.shape.radius = radius
 
 		# Stop the explosion when it reaches the max radius
 		if radius >= max_radius:
