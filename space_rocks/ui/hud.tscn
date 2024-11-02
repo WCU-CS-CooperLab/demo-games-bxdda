@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0q1kv7u1wqw2"]
+[gd_scene load_steps=24 format=3 uid="uid://d0q1kv7u1wqw2"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_0xvxu"]
 [ext_resource type="Texture2D" uid="uid://4jqunvr7ju5r" path="res://ui/settings.png" id="2_ii6sw"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c4nc3j6s4m3os" path="res://assets/play_button_h.png" id="5_na5a7"]
 [ext_resource type="Texture2D" uid="uid://cx0rki5o4ma0g" path="res://assets/health.png" id="6_0klhw"]
 [ext_resource type="Texture2D" uid="uid://ct07ntf3bshct" path="res://assets/bar_red_200.png" id="7_u7p2w"]
+[ext_resource type="Texture2D" uid="uid://cd0c25y4ehj7y" path="res://assets/play_button_b.png" id="13_iswxp"]
+[ext_resource type="Texture2D" uid="uid://dmi88i477hge4" path="res://assets/play_button_hb.png" id="14_ylmuu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2thks"]
 font = ExtResource("2_lrrho")
@@ -21,9 +23,81 @@ font_size = 30
 font = ExtResource("2_lrrho")
 font_size = 64
 
+[sub_resource type="LabelSettings" id="LabelSettings_m2gh4"]
+font = ExtResource("2_lrrho")
+font_size = 48
+outline_size = 3
+outline_color = Color(0.0431373, 0.0431373, 0.0431373, 0.847059)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.384314)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yphby"]
+font = ExtResource("2_lrrho")
+font_size = 64
+outline_size = 3
+outline_color = Color(0.0352941, 0.0352941, 0.0352941, 0.584314)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.364706)
+shadow_offset = Vector2(3, 5)
+
 [sub_resource type="LabelSettings" id="LabelSettings_5u74f"]
 font = ExtResource("2_lrrho")
 font_size = 64
+
+[sub_resource type="Animation" id="Animation_2vam4"]
+resource_name = "title"
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Message:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.333333, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 205.5), Vector2(40, 160), Vector2(96, 88), Vector2(144, 56), Vector2(192, 8), Vector2(192, 8), Vector2(400, -128), Vector2(632, -224), Vector2(776, -304), Vector2(664, -472)]
+}
+
+[sub_resource type="Animation" id="Animation_yuwb7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Message:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 205.5)]
+}
+
+[sub_resource type="Animation" id="Animation_u45b2"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Message:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 205.5), Vector2(0, 184), Vector2(8, 152), Vector2(8, 120), Vector2(8, 88), Vector2(8, 112), Vector2(8, 136), Vector2(8, 152), Vector2(16, 160), Vector2(16, 168)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqtgj"]
+_data = {
+"RESET": SubResource("Animation_yuwb7"),
+"idle": SubResource("Animation_u45b2"),
+"title": SubResource("Animation_2vam4")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_0xvxu")
@@ -199,6 +273,47 @@ size_flags_horizontal = 4
 texture_normal = ExtResource("4_7bvg3")
 texture_hover = ExtResource("5_na5a7")
 
+[node name="SettingsButton" type="TextureButton" parent="."]
+offset_left = 464.0
+offset_top = 504.0
+offset_right = 713.0
+offset_bottom = 569.0
+texture_normal = ExtResource("13_iswxp")
+texture_hover = ExtResource("14_ylmuu")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="SettingsButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.985
+offset_right = -1.0
+offset_bottom = -0.0250015
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_m2gh4")
+horizontal_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="."]
+offset_left = 464.0
+offset_top = 600.0
+offset_right = 713.0
+offset_bottom = 665.0
+texture_normal = ExtResource("13_iswxp")
+texture_hover = ExtResource("14_ylmuu")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ExitButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.996
+anchor_bottom = 0.862
+offset_top = -8.0
+offset_right = -0.00401306
+offset_bottom = 12.97
+text = "EXIT"
+label_settings = SubResource("LabelSettings_yphby")
+horizontal_alignment = 1
+
 [node name="Message" type="Label" parent="."]
 offset_top = 205.5
 offset_right = 1152.0
@@ -212,6 +327,12 @@ horizontal_alignment = 1
 wait_time = 2.0
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vqtgj")
+}
+autoplay = "idle"
+
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/MenuButton/ItemList" to="MarginContainer/HBoxContainer/MenuButton" method="_on_item_list_item_activated"]
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer/HSlider" to="MarginContainer/HBoxContainer/MenuButton" method="_on_volume_slider_value_changed"]
 [connection signal="toggled" from="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer/CheckBox" to="MarginContainer/HBoxContainer/MenuButton" method="_on_fullscreen_toggled"]
@@ -219,4 +340,6 @@ one_shot = true
 [connection signal="item_selected" from="MarginContainer/HBoxContainer/MenuButton/ItemList/VBoxContainer2/OptionButton" to="MarginContainer/HBoxContainer/MenuButton" method="_on_res_item_selected"]
 [connection signal="empty_clicked" from="MarginContainer/HBoxContainer/MenuButton/ItemList2" to="MarginContainer/HBoxContainer/MenuButton" method="_on_item_list_2_empty_clicked"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
