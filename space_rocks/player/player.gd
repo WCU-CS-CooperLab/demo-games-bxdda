@@ -95,9 +95,29 @@ func get_input():
 		$EngineSound2.play()
 	if Input.is_action_just_released("boost"):
 		$EngineSound2.stop()
-	if Input.is_action_pressed("boost"):
+		$LWingExhaust.emitting = false
+		$RWingExhaust.emitting = false
+	if Input.is_action_pressed("rotate_thrust"):
+		spin_power = 20000
+		if (Input.is_action_pressed("rotate_left") and (!$LWingExhaust3.emitting) and (!$LWingExhaust.emitting)):
+			$LWingExhaust2.emitting = true
+			$RWingExhaust2.emitting = true
+		if (Input.is_action_pressed("rotate_right") and (!$LWingExhaust2.emitting) and (!$LWingExhaust.emitting)):
+			$LWingExhaust3.emitting = true
+			$RWingExhaust3.emitting = true
+	if Input.is_action_just_pressed("rotate_thrust"): 
+		$WingEngineSound.play()
+	if Input.is_action_just_released("rotate_thrust"):
+		$WingEngineSound.stop()
+		$LWingExhaust2.emitting = false
+		$RWingExhaust2.emitting = false
+		$LWingExhaust3.emitting = false
+		$RWingExhaust3.emitting = false
+	if Input.is_action_pressed("boost") and !$LWingExhaust2.emitting and !$LWingExhaust3.emitting:
 		spin_power = 5000
 		$Exhaust2.emitting = true
+		$LWingExhaust.emitting = true
+		$RWingExhaust.emitting = true
 		thrust = transform.x * boost_power
 	rotation_dir = Input.get_axis("rotate_left", "rotate_right")
 	if Input.is_action_pressed("shoot") and can_shoot:
