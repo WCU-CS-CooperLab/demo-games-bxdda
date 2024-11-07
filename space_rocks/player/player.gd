@@ -75,7 +75,7 @@ func get_input():
 		return
 	if Input.is_action_pressed("thrust"):
 		$Exhaust.emitting = true
-		if not $EngineSound.playing:
+		if !$EngineSound.playing:
 			$EngineSound.play()
 		else:
 			$EngineSound.stop()
