@@ -46,12 +46,16 @@ func _physics_process(delta):
 func die():
 	set_physics_process(false)
 	$cartoon_plane.hide()
+	$ImpactSound.play()
 	$Explosion.show()
 	$Explosion.play("default")
 	await $Explosion.animation_finished
 	$Explosion.hide()
+	if score > Global.high_score:
+		Global.high_score = score
+		Global.save_score()
 	dead.emit()
-	get_tree().reload_current_scene()
+
 
 
 func set_fuel(value):

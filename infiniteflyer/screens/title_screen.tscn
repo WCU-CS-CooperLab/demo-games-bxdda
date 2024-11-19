@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://8vmyb1fgq8qh"]
+
+[ext_resource type="Script" path="res://screens/title_screen.gd" id="1_8lwne"]
+[ext_resource type="Texture2D" uid="uid://uc56iuo1h5h0" path="res://styled_sky_sml.hdr" id="1_p1o7k"]
+[ext_resource type="Texture2D" uid="uid://784yimhsjbt0" path="res://buttons/play_button.png" id="2_xrqaa"]
+[ext_resource type="Texture2D" uid="uid://20k8nmareh0t" path="res://buttons/play_button_pr.png" id="3_j051n"]
+[ext_resource type="Texture2D" uid="uid://cenj2u3t6t4nw" path="res://buttons/play_button_h.png" id="4_60sw2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqcjp"]
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_mrp0x"]
+font_size = 64
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8lwne")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.926
+anchor_top = 0.5
+anchor_right = 26.591
+anchor_bottom = 4.011
+offset_left = -117.04
+offset_top = -20.0
+offset_right = 984.36
+offset_bottom = 863.56
+texture = ExtResource("1_p1o7k")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 26.125
+offset_left = 116.0
+offset_top = -2.0
+offset_right = -0.00012207
+offset_bottom = 173.0
+text = "INFINITE FLYER"
+label_settings = SubResource("LabelSettings_vqcjp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 398.0
+offset_right = 660.0
+offset_bottom = 551.0
+texture_normal = ExtResource("2_xrqaa")
+texture_pressed = ExtResource("3_j051n")
+texture_hover = ExtResource("4_60sw2")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.287
+offset_left = 510.0
+offset_top = 577.0
+offset_right = 550.0
+offset_bottom = 653.52
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_mrp0x")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

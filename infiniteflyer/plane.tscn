@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ch8yfmvcmk0hm"]
+[gd_scene load_steps=12 format=3 uid="uid://ch8yfmvcmk0hm"]
 
 [ext_resource type="Script" path="res://plane.gd" id="1_of55c"]
 [ext_resource type="PackedScene" uid="uid://dkls8vcnqycg6" path="res://cartoon_plane.glb" id="2_qihis"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dptyr6xsbquft" path="res://smoke/smoke_03.png" id="5_heqka"]
 [ext_resource type="Texture2D" uid="uid://biloub0jloxsj" path="res://smoke/smoke_04.png" id="6_kopim"]
 [ext_resource type="Texture2D" uid="uid://bbt3avscu7gj1" path="res://smoke/smoke_05.png" id="7_c6ch6"]
+[ext_resource type="AudioStream" uid="uid://nb0wmm8xlbed" path="res://audio/impact.wav" id="8_u26hn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ahj6q"]
 size = Vector3(5.22603, 0.230957, 1.21277)
@@ -61,5 +62,8 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_cwve8")
 frame = 4
 frame_progress = 1.0
+
+[node name="ImpactSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_u26hn")
 
 [editable path="cartoon_plane"]
