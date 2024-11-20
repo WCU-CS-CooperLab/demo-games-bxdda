@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxsoffi5q8c26"]
+[gd_scene load_steps=11 format=3 uid="uid://bxsoffi5q8c26"]
 
 [ext_resource type="Texture2D" uid="uid://uc56iuo1h5h0" path="res://styled_sky_sml.hdr" id="1_50v0u"]
 [ext_resource type="Script" path="res://main.gd" id="1_klx47"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgmsbjxhbomp7" path="res://world/Chunk.tscn" id="2_e6xs2"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="4_bpkug"]
 [ext_resource type="PackedScene" uid="uid://c8otntjcdimyg" path="res://ui.tscn" id="6_elpci"]
+[ext_resource type="AudioStream" uid="uid://b6gv3emotmkng" path="res://audio/Riverside Ride Short Loop.wav" id="7_bvbrw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7evfl"]
 panorama = ExtResource("1_50v0u")
@@ -26,7 +27,7 @@ script = ExtResource("1_klx47")
 environment = SubResource("Environment_uvvfu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 18.7567, 14.5431)
 shadow_enabled = true
 
 [node name="Plane" parent="." instance=ExtResource("1_q2p2c")]
@@ -42,6 +43,11 @@ offset = Vector3(0, 7, 17)
 
 [node name="UI" parent="." instance=ExtResource("6_elpci")]
 
+[node name="ThemeMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_bvbrw")
+autoplay = true
+
+[connection signal="dead" from="Plane" to="." method="_on_plane_dead"]
 [connection signal="fuel_changed" from="Plane" to="UI" method="update_fuel"]
 [connection signal="score_changed" from="Plane" to="UI" method="update_score"]
 

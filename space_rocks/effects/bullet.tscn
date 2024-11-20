@@ -8,6 +8,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjuiu"]
 
 [node name="Bullet" type="Area2D"]
+collision_mask = 5
 script = ExtResource("1_5au7q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

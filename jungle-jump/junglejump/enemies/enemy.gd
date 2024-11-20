@@ -32,6 +32,11 @@ func take_damage():
 		#for some reason i was getting multiple calls of either the died signal, 
 		#or the score increasing, so score was going up by more than 100 points
 	is_dead = true
+	if self.get_children().size() > 4:
+		for child in self.get_children():
+			if child is Area2D:
+				child.snagged = false
+				get_tree().root.add_child(child)
 	died.emit()
 	$AnimationPlayer.play("death")
 	$HurtSound.play()

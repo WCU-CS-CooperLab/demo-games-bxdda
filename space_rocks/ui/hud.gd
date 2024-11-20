@@ -6,6 +6,9 @@ signal start_game
 @onready var score_label = $MarginContainer/HBoxContainer/Score
 @onready var message = $Message
 @onready var start_button = $StartButton
+@onready var settings_button = $SettingsButton
+@onready var exit_button = $ExitButton
+
 
 @onready var shield_bar = $MarginContainer/HBoxContainer/ShieldBar
 @onready var health_bar = $MarginContainer/HBoxContainer/HealthBar
@@ -37,17 +40,24 @@ func update_lives(value):
 		lives_counter[item].visible = value > item
 
 func game_over():
+	$AnimationPlayer.play("RESET")
 	show_message("Game Over")
 	await $Timer.timeout
 	start_button.show()
+	settings_button.show()
+	exit_button.show()
 
 func _on_start_button_pressed():
 	start_button.hide()
+	settings_button.hide()
+	exit_button.hide()
 	start_game.emit()
 
 func _on_timer_timeout():
-	message.hide()
-	message.text = ""
+	$AnimationPlayer.play("title")
+	if $AnimationPlayer.animation_finished:
+		message.hide()
+		message.text = ""
 
 
 func update_health(value):
@@ -55,4 +65,12 @@ func update_health(value):
 
 
 func _on_menu_button_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_settings_button_pressed() -> void:
 	pass # Replace with function body.

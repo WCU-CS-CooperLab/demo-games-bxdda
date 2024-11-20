@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbrp07ndxbsar"]
+[gd_scene load_steps=6 format=3 uid="uid://bbrp07ndxbsar"]
 
 [ext_resource type="Script" path="res://enemy/enemy_bullet.gd" id="1_who4v"]
 [ext_resource type="Texture2D" uid="uid://c2b3solwndyu" path="res://assets/laser_green.png" id="2_j2fta"]
 [ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://effects/explosion.tscn" id="3_du7yv"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ax6iw"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjuiu"]
 
 [node name="EnemyBullet" type="Area2D"]
+collision_mask = 7
 script = ExtResource("1_who4v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_ax6iw")
 texture = ExtResource("2_j2fta")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

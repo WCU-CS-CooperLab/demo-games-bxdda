@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmlhka67hgd36"]
+
+[ext_resource type="PackedScene" uid="uid://dk6c1skb8vqk6" path="res://items/power_up.tscn" id="1_c44ag"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vlchh"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_nspn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yr0h4"]
+resource_name = "powerup"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.4, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, -6), Vector2(0, -7), Vector2(0, -4), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkvpx"]
+_data = {
+"RESET": SubResource("Animation_nspn0"),
+"powerup": SubResource("Animation_yr0h4")
+}
+
+[node name="PowerUp_Health" instance=ExtResource("1_c44ag")]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_vlchh")
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_fkvpx")
+}
+autoplay = "powerup"

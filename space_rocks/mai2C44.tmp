@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://cxkcwiu3kltmf"]
+[gd_scene load_steps=13 format=3 uid="uid://cxkcwiu3kltmf"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_10h8x"]
 [ext_resource type="Texture2D" uid="uid://b07ppvynrioum" path="res://assets/space_background.png" id="1_ctspg"]
 [ext_resource type="PackedScene" uid="uid://ha5inn7poxpa" path="res://effects/rock.tscn" id="2_etslb"]
 [ext_resource type="PackedScene" uid="uid://b4a3ct6sv2ogx" path="res://player/player.tscn" id="2_hgr4b"]
 [ext_resource type="PackedScene" uid="uid://jwyjjaqdatw7" path="res://enemy/enemy.tscn" id="3_lhtlv"]
-[ext_resource type="PackedScene" uid="uid://dk6c1skb8vqk6" path="res://items/power_up.tscn" id="4_kq3e2"]
 [ext_resource type="PackedScene" uid="uid://d0q1kv7u1wqw2" path="res://ui/hud.tscn" id="5_3mxc2"]
 [ext_resource type="Script" path="res://ui/background.gd" id="5_17mfk"]
 [ext_resource type="PackedScene" uid="uid://de5rll1g1mwec" path="res://effects/explosion.tscn" id="5_gml3u"]
@@ -24,7 +23,6 @@ process_mode = 3
 script = ExtResource("1_10h8x")
 rock_scene = ExtResource("2_etslb")
 enemy_scene = ExtResource("3_lhtlv")
-powerup_scene = ExtResource("4_kq3e2")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(457, -1199)

@@ -20,6 +20,7 @@ func _ready():
 
 func _on_body_entered(body):
 	$CollisionShape3D/MeshInstance3D.hide()
+	$ToneSound.play()
 	var d = global_position.distance_to(body.global_position)
 	if d < 2.0:
 		$Score.text = "200"
