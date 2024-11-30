@@ -4,18 +4,22 @@
 ### Phase1
 [Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/Phase1/SpaceRocks.html)
 
-
 ### Phase2
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/Phase2/SpaceRocks.html)
 
+
 ## Project 2
 ### Phase1
+[Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase1/JungleJump.html)
 
 ### Phase2
+[Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase2/JungleJump.html)
+
 
 ## Project 3
 ### Phase1
 [Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/Phase1/InfiniteFlyer.html)
+
 ### Phase2
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/Phase2/InfiniteFlyer.html)
 
