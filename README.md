@@ -13,7 +13,7 @@
 [Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase1/JungleJump.html)
 
 ### Phase2
-[Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase2/JungleJump.html)
+[Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase2/JungleJump.html)
 
 
 ## Project 3
