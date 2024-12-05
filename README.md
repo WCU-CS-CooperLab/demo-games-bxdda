@@ -8,6 +8,9 @@
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/Phase2/SpaceRocks.html)
 
 
+### Write-Up
+[PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/P1.pdf)
+
 ## Project 2
 ### Phase1
 [Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase1/JungleJump.html)
