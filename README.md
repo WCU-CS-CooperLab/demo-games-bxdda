@@ -48,11 +48,11 @@
 
 
 ### Windows
-[Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Windows)
+[Windows](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Windows)
 
 
 ### macOS
-[Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/macOS)
+[macOS](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/macOS)
 
 
 ### Write-Up
