@@ -1,4 +1,5 @@
 # Projects
+---
 ## Project 1
 
 ### Phase1
@@ -12,7 +13,7 @@
 [PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/P1.pdf)
 
 
-
+---
 ## Project 2
 ### Phase1
 [Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase1/JungleJump.html)
@@ -25,7 +26,7 @@
 [PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/P2.pdf)
 
 
-
+---
 ## Project 3
 ### Phase1
 [Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/Phase1/InfiniteFlyer.html)
@@ -33,12 +34,35 @@
 ### Phase2
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/Phase2/InfiniteFlyer.html)
 
+
+### Write-Up
+[PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/P3.pdf)
+
+---
 ## Project 4
 ### Pre-Phase1
 [Pre-Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Phase1/BumperRally.html)
 
 ### Phase2
-[Phase_2]()
+[Phase_2] on game.wcpc.fun
+
+
+### Windows
+[Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Windows)
+
+
+### macOS
+[Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/macOS)
+
+
+### Write-Up
+[PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/P4.pdf)
+
+
+---
+
+
+
 
 # GamePublish
 A template repository to publish games
