@@ -44,15 +44,15 @@
 [Pre-Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Phase1/BumperRally.html)
 
 ### Phase2
-[Phase_2] on game.wcpc.fun
+[Phase_2](projects/Project4/Phase2/) on game.wcpc.fun, but directory of files uploaded there 
 
 
 ### Windows
-[Windows](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Windows)
+[Windows](projects/Project4/Windows)
 
 
 ### macOS
-[macOS](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/macOS)
+[macOS](projects/Project4/macOS)
 
 
 ### Write-Up
