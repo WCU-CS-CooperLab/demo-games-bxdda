@@ -82,7 +82,7 @@
 
 
 
-##Team Project 2
+## Team Project 2
 [Windows](https://github.com/WCU-CS-CooperLab/demo-games-inagle33/tree/main/Projects/TeamProject2_windows)
 
 [Mac](https://github.com/WCU-CS-CooperLab/demo-games-inagle33/tree/main/Projects/TeamProject2_mac)
