@@ -58,7 +58,13 @@
 ### Write-Up
 [PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/P4.pdf)
 
+---
+## Team Project 1
+### Export
+[Export](https://wcu-cs-cooperlab.github.io/demo-games-inagle33/Projects/TreasureOfTheStoneBridge/)
 
+[Files](https://github.com/WCU-CS-CooperLab/csc476-team-project-1-3kingsproductions/tree/main/treasure-of-the-stone-bridge)
+---
 ---
 
 
@@ -76,8 +82,9 @@ A template repository to publish games
 
 [Space Rocks](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/space_rocks/SpaceRocks.html)
 
-
 [Player_scene](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/player_scene/index.html)
+
+
 
 # Directories
 
@@ -88,5 +95,8 @@ A template repository to publish games
 [Mini_Golf_scene](mini_golf/)
 
 [Jungle_Jump_scene](jungle_jump/)
+
+[Infinite_Flyer_scene](infinite_flyer/)
+
 
 
