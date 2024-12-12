@@ -1,13 +1,16 @@
 # Projects
 ---
 ## Project 1
-
 ### Phase1
 [Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/Phase1/SpaceRocks.html)
 
 ### Phase2
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/Phase2/SpaceRocks.html)
 
+
+
+### Files
+[Files](https://github.com/WCU-CS-CooperLab/gamedev-workbench-bxdda/tree/main/individual-projects/Project1/space_rocks)
 
 ### Write-Up
 [PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project1/P1.pdf)
@@ -22,6 +25,10 @@
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/Phase2/JungleJump.html)
 
 
+
+### Files
+[Files](https://github.com/WCU-CS-CooperLab/gamedev-workbench-bxdda/tree/main/individual-projects/Project2/junglejump)
+
 ### Write-Up
 [PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project2/P2.pdf)
 
@@ -35,17 +42,25 @@
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/Phase2/InfiniteFlyer.html)
 
 
+
+### Files
+[Files](https://github.com/WCU-CS-CooperLab/gamedev-workbench-bxdda/tree/main/individual-projects/Project3/infiniteflyer)
+
 ### Write-Up
 [PDF](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/P3.pdf)
 
 ---
 ## Project 4
-### Pre-Phase1
-[Pre-Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Phase1/BumperRally.html)
+### Phase1
+[Phase_1](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project4/Phase1/BumperRally.html)
 
 ### Phase2
 [Phase_2](projects/Project4/Phase2/) on game.wcpc.fun, but directory of files uploaded there 
 
+
+
+### Files
+[Files](https://github.com/WCU-CS-CooperLab/gamedev-workbench-bxdda/tree/main/individual-projects/Project4/bumper-rally)
 
 ### Windows
 [Windows](projects/Project4/Windows)
@@ -64,8 +79,21 @@
 [Export](https://wcu-cs-cooperlab.github.io/demo-games-inagle33/Projects/TreasureOfTheStoneBridge/)
 
 [Files](https://github.com/WCU-CS-CooperLab/csc476-team-project-1-3kingsproductions/tree/main/treasure-of-the-stone-bridge)
+
+
+
+##Team Project 2
+[Windows](https://github.com/WCU-CS-CooperLab/demo-games-inagle33/tree/main/Projects/TeamProject2_windows)
+
+[Mac](https://github.com/WCU-CS-CooperLab/demo-games-inagle33/tree/main/Projects/TeamProject2_mac)
+
+[Files](https://github.com/WCU-CS-CooperLab/csc476-team-project-2-the4kings/tree/main/gem_rush)
+
 ---
 ---
+
+
+
 
 
 
