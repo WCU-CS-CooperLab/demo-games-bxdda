@@ -42,6 +42,12 @@
 [Phase_2](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/Phase2/InfiniteFlyer.html)
 
 
+### Windows
+[Windows](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/Windows/InfiniteFlyer.7z)
+
+### MacOS
+[MacOS](https://wcu-cs-cooperlab.github.io/demo-games-bxdda/projects/Project3/MacOS/InfiniteFlyer.zip)
+
 
 ### Files
 [Files](https://github.com/WCU-CS-CooperLab/gamedev-workbench-bxdda/tree/main/individual-projects/Project3/infiniteflyer)
